@@ -1,0 +1,27 @@
+$colors: (
+  text: #2F3B47,
+  text-light: rgba(#323338,0.6),
+  text-dark: #2E3035,
+  text-white: #F6F6F6,
+  bg: #F0F1F6,
+  green: #00BFA5,
+  red: #FF5555,
+  gray-dark: #2E3035,
+  gray-light: #F6F5F7,
+);
+
+:root {
+  // each item in color map
+  @each $name, $color in $colors {
+    --color-#{$name}: #{$color};
+  }
+}
+
+@function color($key) {
+  @if map-has-key($colors, $key) {
+    @return map-get($colors, $key);
+  }
+
+  @warn "Unknown `#{$key}` in $colors.";
+  @return null;
+}
