@@ -1,0 +1,28 @@
+$fonts: (
+  // regular: 'Nunito',
+  regular: 'Roboto',
+  headline: 'Playfare Display'
+);
+
+@function font($key) {
+  @if map-has-key($fonts, $key) {
+    @return map-get($fonts, $key);
+  }
+
+  @warn "Unknown `#{$key}` in $fonts.";
+  @return null;
+}
+
+$browser-context: 16; // Default
+
+@function rem($pixels, $context: $browser-context) {
+  @if (unitless($pixels)) {
+    $pixels: $pixels * 1px;
+  }
+
+  @if (unitless($context)) {
+    $context: $context * 1px;
+  }
+
+  @return $pixels / $context * 1rem;
+}

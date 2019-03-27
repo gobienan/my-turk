@@ -1,0 +1,201 @@
+experiments = {
+	production: [
+	{
+		title: "WebConf Study 1: Recoin Original with Onboarding",
+		description: "This is the description of the experiment",
+		available: "2 / 10",
+		pending: "3 / 10",
+		waitingForApproval: "5 / 10",
+		completed: "0 / 10",
+		id: generate('1234567890ABCDEFGHIJKLMNOPKR', 25),
+
+		hits: [
+		{
+			id: generate('1234567890ABCDEFGHIJKLMNOPKR', 25),
+			available: "2 / 10",
+			pending: "3 / 10",
+			waitingForApproval: "5 / 10",
+			completed: "0 / 10",
+		},
+		{
+			id: generate('1234567890ABCDEFGHIJKLMNOPKR', 25),
+			available: "2 / 10",
+			pending: "3 / 10",
+			waitingForApproval: "5 / 10",
+			completed: "0 / 10",
+		}]
+	},
+	{
+		title: "WebConf Study 1: Recoin Original with Onboarding",
+		description: "This is the description of the experiment",
+		available: "2 / 10",
+		pending: "3 / 10",
+		waitingForApproval: "5 / 10",
+		completed: "0 / 10",
+		id: generate('1234567890ABCDEFGHIJKLMNOPKR', 25),
+
+		hits: [
+		{
+			id: generate('1234567890ABCDEFGHIJKLMNOPKR', 25),
+			available: "2 / 10",
+			pending: "3 / 10",
+			waitingForApproval: "5 / 10",
+			completed: "0 / 10",
+		},
+		{
+			id: generate('1234567890ABCDEFGHIJKLMNOPKR', 25),
+			available: "2 / 10",
+			pending: "3 / 10",
+			waitingForApproval: "5 / 10",
+			completed: "0 / 10",
+		}]
+	}],
+	sandbox: [
+	{
+		title: "WebConf Study 1: Recoin Original with Onboarding",
+		description: "This is the description of the experiment",
+		available: "2 / 10",
+		pending: "3 / 10",
+		waitingForApproval: "5 / 10",
+		completed: "0 / 10",
+		id: generate('1234567890ABCDEFGHIJKLMNOPKR', 25),
+
+		hits: [
+		{
+			id: generate('1234567890ABCDEFGHIJKLMNOPKR', 25),
+			available: "2 / 10",
+			pending: "3 / 10",
+			waitingForApproval: "5 / 10",
+			completed: "0 / 10",
+		}, ]
+	}],
+	inactive: [
+	{
+		title: "WebConf Study 1: Wikidata Only",
+		description: "This is the description of the experiment",
+		available: "2 / 10",
+		pending: "3 / 10",
+		waitingForApproval: "5 / 10",
+		completed: "0 / 10",
+		id: generate('1234567890ABCDEFGHIJKLMNOPKR', 25),
+
+		hits: [
+		{
+			id: generate('1234567890ABCDEFGHIJKLMNOPKR', 25),
+			available: "2 / 10",
+			pending: "3 / 10",
+			waitingForApproval: "5 / 10",
+			completed: "0 / 10",
+		},
+		{
+			id: generate('1234567890ABCDEFGHIJKLMNOPKR', 25),
+			available: "2 / 10",
+			pending: "3 / 10",
+			waitingForApproval: "5 / 10",
+			completed: "0 / 10",
+		}]
+	}],
+}
+
+workers = {
+	waiting: [
+	{
+		id: generate('1234567890ABCDEFGHIJKLMNOPKR', 20),
+		assignmentID: generate('1234567890ABCDEFGHIJKLMNOPKR', 25),
+		started:
+		{
+			time: "15:46:14",
+			date: "01.01.19"
+		},
+		finished:
+		{
+			time: "15:57:37",
+			date: "01.01.19"
+		},
+	}],
+	active: [
+	{
+		id: generate('1234567890ABCDEFGHIJKLMNOPKR', 20),
+		assignmentID: generate('1234567890ABCDEFGHIJKLMNOPKR', 25),
+		started:
+		{
+			time: "15:46:14",
+			date: "01.01.19"
+		},
+		finished:
+		{},
+	},
+	{
+		id: generate('1234567890ABCDEFGHIJKLMNOPKR', 20),
+		assignmentID: generate('1234567890ABCDEFGHIJKLMNOPKR', 25),
+		started:
+		{
+			time: "13:46:14",
+			date: "01.01.19"
+		},
+		finished:
+		{},
+	}],
+	accepted: [
+	{
+		id: generate('1234567890ABCDEFGHIJKLMNOPKR', 20),
+		assignmentID: generate('1234567890ABCDEFGHIJKLMNOPKR', 25),
+		started:
+		{
+			time: "15:46:14",
+			date: "01.01.19"
+		},
+		finished:
+		{
+			time: "15:57:37",
+			date: "01.01.19"
+		},
+		accepted:
+		{
+			time: "15:57:37",
+			date: "01.01.19"
+		},
+		message: "This text is not final and should be replaced. If you're reading this on the production version...."
+	}],
+	rejected: [
+	{
+		id: generate('1234567890ABCDEFGHIJKLMNOPKR', 20),
+		assignmentID: generate('1234567890ABCDEFGHIJKLMNOPKR', 25),
+		started:
+		{
+			time: "15:46:14",
+			date: "01.01.19"
+		},
+		finished:
+		{
+			time: "15:57:37",
+			date: "01.01.19"
+		},
+		rejected:
+		{
+			time: "15:57:37",
+			date: "01.01.19"
+		},
+		message: "This text is not final and should be replaced. If you're reading this on the production version...."
+	},
+	{
+		id: generate('1234567890ABCDEFGHIJKLMNOPKR', 20),
+		assignmentID: generate('1234567890ABCDEFGHIJKLMNOPKR', 25),
+		started:
+		{
+			time: "15:46:14",
+			date: "01.01.19"
+		},
+		finished:
+		{
+			time: "15:57:37",
+			date: "01.01.19"
+		},
+		rejected:
+		{
+			time: "15:57:37",
+			date: "01.01.19"
+		},
+		message: "This text is not final and should be replaced. If you're reading this on the production version...."
+	}]
+}

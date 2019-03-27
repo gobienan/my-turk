@@ -1,0 +1,25 @@
+{
+	"name": "server",
+	"version": "0.0.0",
+	"private": true,
+	"scripts": {
+		"start": "node ./server/bin/www",
+		"start dev": "./server/bin/www"
+	},
+	"dependencies": {
+		"aws-sdk": "^2.327.0",
+		"body-parser": "^1.18.3",
+		"cookie-parser": "~1.4.3",
+		"cors": "^2.8.5",
+		"csv-express": "^1.2.2",
+		"debug": "~2.6.9",
+		"express": "~4.16.0",
+		"express-reload": "^1.1.0",
+		"http-errors": "~1.6.2",
+		"mongodb": "^3.1.6",
+		"morgan": "~1.9.0",
+		"mustache-express": "^1.2.8",
+		"pug": "^2.0.3",
+		"semantic-ui-icon": "^2.3.3"
+	}
+}
