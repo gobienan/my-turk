@@ -82,7 +82,7 @@ export default {
   },
   props: {
     creationTime: {
-      type:String,
+      type: String,
       default: '',
     },
   },
@@ -103,7 +103,7 @@ export default {
     approved: null,
     rejected: null,
   }),
-    computed: {
+  computed: {
     date: {
       get() {
         return moment(this.creationTime).format('DD.MM.YYYY - HH:mm:ss')
@@ -272,7 +272,6 @@ export default {
       await this.getWorkers()
     },
   },
-
 }
 </script>
 <style lang="scss">

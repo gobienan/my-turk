@@ -14,7 +14,11 @@
         @keyPress="handleKeyPress"
       />
 
-      <BaseSelect :options="options" label="Endpoint" @onChange="handleSelectChange"/>
+      <BaseSelect
+        :options="options"
+        label="Endpoint"
+        @onChange="handleSelectChange"
+      />
     </div>
   </BaseWrapper>
 </template>

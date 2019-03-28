@@ -1,7 +1,9 @@
 <template>
   <div class="BaseSelect">
     <select v-model="selected">
-      <option v-for="(option, i) in options" :key="i" :value="option.value">{{ option.label }}</option>
+      <option v-for="(option, i) in options" :key="i" :value="option.value">{{
+        option.label
+      }}</option>
     </select>
     <label class="Label">{{ label }}</label>
   </div>

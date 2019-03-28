@@ -14,7 +14,7 @@
     </div>
     <div v-else>
       <h2 class="Title Title--small">{{ title }}</h2>
-      <span  v-if="meta"  class="Meta">{{meta}}</span>
+      <span v-if="meta" class="Meta">{{ meta }}</span>
       <h3 class="Description Description--small">{{ description }}</h3>
     </div>
   </div>
@@ -24,28 +24,28 @@ export default {
   name: 'BaseHeadline',
   props: {
     title: {
-      type:String,
-      default:''
+      type: String,
+      default: '',
     },
     description: {
-      type:String,
-      default:''
+      type: String,
+      default: '',
     },
     meta: {
-      type:String,
-      default:''
+      type: String,
+      default: '',
     },
     prime: Boolean,
     route: {
-      type: ()=> {},
+      type: () => {},
       default: {},
       name: {
-        type:String,
-        default:''
+        type: String,
+        default: '',
       },
       path: {
-        type:String,
-        default:''
+        type: String,
+        default: '',
       },
       params: Object,
     },

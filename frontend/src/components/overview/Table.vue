@@ -28,7 +28,9 @@
       <span class="is-wide">{{ experiment.description }}</span>
       <span class="is-narrow align-right">{{ experiment.available }}</span>
       <span class="is-narrow align-right">{{ experiment.pending }}</span>
-      <span class="is-narrow align-right">{{ experiment.waitingForApproval }}</span>
+      <span class="is-narrow align-right">{{
+        experiment.waitingForApproval
+      }}</span>
       <span class="is-narrow align-right">{{ experiment.completed }}</span>
       <span class="is-narrow align-center">
         <BaseButtons
@@ -44,7 +46,7 @@
         <span class="Anchor" @click="onHitClick(hit)">HIT</span>
         <span class="is-wide">
           {{ hit.id }}&nbsp;
-          <BaseCopy :value="hit.id"/>
+          <BaseCopy :value="hit.id" />
         </span>
         <span class="is-narrow align-right">{{ hit.available }}</span>
         <span class="is-narrow align-right">{{ hit.pending }}</span>

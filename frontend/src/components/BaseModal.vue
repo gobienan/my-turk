@@ -6,7 +6,7 @@
     @click="closeModal"
   >
     <div class="BaseModal-Content">
-      <h3 class="Title" >{{ title }}</h3>
+      <h3 class="Title">{{ title }}</h3>
       <slot></slot>
       <div class="BaseModal-Content-Buttons">
         <BaseButton

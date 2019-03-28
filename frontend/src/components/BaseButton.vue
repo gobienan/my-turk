@@ -11,7 +11,6 @@
       { 'is-gray-light': grayLight },
     ]"
     @click="$emit('click')"
-
   >
     <slot></slot>
     <span>{{ title }}</span>

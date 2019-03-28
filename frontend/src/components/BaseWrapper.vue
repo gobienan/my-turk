@@ -21,11 +21,11 @@ export default {
   props: {
     title: {
       type: String,
-      default: ''
+      default: '',
     },
     items: {
       type: String,
-      default: ''
+      default: '',
     },
     red: Boolean,
     green: Boolean,

@@ -19,11 +19,11 @@
     <BaseRow v-for="worker in workers" :key="worker.id">
       <span class="is-wide">
         {{ worker.id }}&nbsp;
-        <BaseCopy :value="worker.id"/>
+        <BaseCopy :value="worker.id" />
       </span>
       <span class="is-wide">
         {{ worker.assignmentID }}&nbsp;
-        <BaseCopy :value="worker.assignmentID"/>
+        <BaseCopy :value="worker.assignmentID" />
       </span>
 
       <span class="is-narrow align-right">

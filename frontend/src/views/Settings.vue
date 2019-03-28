@@ -13,8 +13,20 @@
     />
 
     <div class="ButtonWrapper">
-      <BaseButton second square title="Delete Experiment" :red="true" @click="handleDelete"/>
-      <BaseButton prime square title="Save Settings" :green="true" @click="handleSave"/>
+      <BaseButton
+        second
+        square
+        title="Delete Experiment"
+        :red="true"
+        @click="handleDelete"
+      />
+      <BaseButton
+        prime
+        square
+        title="Save Settings"
+        :green="true"
+        @click="handleSave"
+      />
     </div>
     <BaseModal
       :visible="modalIsVisible"

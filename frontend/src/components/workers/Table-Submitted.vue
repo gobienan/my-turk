@@ -19,11 +19,11 @@
     <BaseRow v-for="worker in workers" :key="worker.id">
       <span class="is-wide">
         {{ worker.id }}&nbsp;
-        <BaseCopy :value="worker.assignmentID"/>
+        <BaseCopy :value="worker.assignmentID" />
       </span>
       <span class="is-wide">
         {{ worker.assignmentID }}&nbsp;
-        <BaseCopy :value="worker.assignmentID"/>
+        <BaseCopy :value="worker.assignmentID" />
       </span>
 
       <span class="is-narrow align-right">
@@ -36,9 +36,13 @@
         <div class="is-small">{{ worker.finished.date || '' }}</div>
       </span>
       <span class="align-right">
-        <span class="Anchor" @click="onApprove(worker.assignmentID)">accept</span>
+        <span class="Anchor" @click="onApprove(worker.assignmentID)"
+          >accept</span
+        >
         &nbsp;/&nbsp;
-        <span class="Anchor" @click="onReject(worker.assignmentID)">reject</span>
+        <span class="Anchor" @click="onReject(worker.assignmentID)"
+          >reject</span
+        >
       </span>
     </BaseRow>
   </div>

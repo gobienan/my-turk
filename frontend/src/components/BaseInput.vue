@@ -1,6 +1,6 @@
 <template>
   <div class="BaseInput">
-    <input v-model="mValue" :type="type" name>
+    <input v-model="mValue" :type="type" name />
     <label class="Label">{{ label }}</label>
   </div>
 </template>

@@ -24,10 +24,10 @@
     </BaseWrapper>
 
     <BaseWrapper title="Development" gray-dark>
-      <Table :experiments="experiments.development"/>
+      <Table :experiments="experiments.development" />
     </BaseWrapper>
 
-    <BaseButton prime title="add experiment" @click="addExperiment"/>
+    <BaseButton prime title="add experiment" @click="addExperiment" />
 
     <BaseModal
       :visible="modalIsVisible"
