@@ -1,52 +1,50 @@
-const SERVER_URL = 'http://localhost:3000/api/mturk/';
-
+const SERVER_URL = 'http://localhost:3000/api/mturk/'
 
 export default {
-  login: (payload) => {
-    return sendData('login', payload);
+  login: payload => {
+    return sendData('login', payload)
   },
 
-  addExperiment: (payload) => {
-    return sendData('addExperiment', payload);
+  addExperiment: payload => {
+    return sendData('addExperiment', payload)
   },
 
-  saveSettings: (payload) => {
-    return sendData('saveExperiment', payload);
+  saveSettings: payload => {
+    return sendData('saveExperiment', payload)
   },
 
-  getExperiments: (payload) => {
-    return sendData('getExperiments', payload);
+  getExperiments: payload => {
+    return sendData('getExperiments', payload)
   },
 
-  deleteExperiment: (payload) => {
-    return sendData('deleteExperiment', payload);
+  deleteExperiment: payload => {
+    return sendData('deleteExperiment', payload)
   },
 
-  createHIT: (payload) => {
-    return sendData('createHIT', payload);
+  createHIT: payload => {
+    return sendData('createHIT', payload)
   },
 
-  getHIT:(payload) =>{
-    return sendData('getHIT', payload);
+  getHIT: payload => {
+    return sendData('getHIT', payload)
   },
 
-  deleteHIT:(payload) =>{
-    return sendData('deleteHIT', payload);
+  deleteHIT: payload => {
+    return sendData('deleteHIT', payload)
   },
 
-  listAssignments: (payload) => {
-    return sendData('listAssignments', payload);
+  listAssignments: payload => {
+    return sendData('listAssignments', payload)
   },
 
-  approveAssignment: (payload) => {
-    return sendData('approveAssignment', payload);
+  approveAssignment: payload => {
+    return sendData('approveAssignment', payload)
   },
 
-  rejectAssignment: (payload) => {
-    return sendData('rejectAssignment', payload);
+  rejectAssignment: payload => {
+    return sendData('rejectAssignment', payload)
   },
-};
-
+}
 
 /**
  * GET Request.
@@ -57,9 +55,9 @@ function getData(endpoint) {
   let options = {
     endpoint: SERVER_URL + endpoint,
     method: 'GET',
-  };
+  }
 
-  return request(options);
+  return request(options)
 }
 
 /**
@@ -73,9 +71,9 @@ function sendData(endpoint, payload) {
     endpoint: SERVER_URL + endpoint,
     method: 'POST',
     payload: payload,
-  };
+  }
 
-  return request(options);
+  return request(options)
 }
 
 /**
@@ -85,12 +83,12 @@ function sendData(endpoint, payload) {
  * @return {Object} The result of the request.
  */
 async function request({ endpoint, method, payload }) {
-  let options = {};
+  let options = {}
   if (method === 'GET') {
     options = {
       method: method,
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
     }
   } else {
@@ -98,26 +96,25 @@ async function request({ endpoint, method, payload }) {
       method: method,
       body: JSON.stringify(payload) || '',
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
-    };
+    }
   }
-
 
   let response = fetch(endpoint, options)
     .then(response => {
       if (!response.ok) {
-        throw new Error('Not 200 response');
+        throw new Error('Not 200 response')
       }
-      return response.json();
+      return response.json()
     })
     .then(json => {
-      return json;
+      return json
     })
     .catch(error => {
-      console.error('Error:', error);
-      return false;
-    });
+      console.error('Error:', error)
+      return false
+    })
 
-  return response;
+  return response
 }

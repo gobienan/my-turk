@@ -1,5 +1,5 @@
 <template>
-  <div class="BaseRow" :class="[{'is-bold':bold},{'is-light':light}]">
+  <div class="BaseRow" :class="[{ 'is-bold': bold }, { 'is-light': light }]">
     <slot></slot>
   </div>
 </template>
@@ -7,12 +7,14 @@
 export default {
   name: 'BaseRow',
   props: {
-    title: String,
+    title: {
+      type: String,
+      default: '',
+    },
     light: Boolean,
-    bold: Boolean
+    bold: Boolean,
   },
 }
-
 </script>
 <style lang="scss">
 .BaseRow {
@@ -33,7 +35,7 @@ export default {
     left: 0;
     width: 100%;
     height: 1px;
-    background-color: rgba(black, .2);
+    background-color: rgba(black, 0.2);
   }
 
   &:last-child {
@@ -71,7 +73,7 @@ export default {
     font-weight: 900;
     font-size: rem(16px);
 
-    >span {
+    > span {
       line-height: rem(25);
     }
   }
@@ -81,13 +83,9 @@ export default {
     font-size: rem(14px);
     color: color(text-light);
 
-    >span {
+    > span {
       padding: 0;
       padding-bottom: 8px;
-
-      &:not(:last-of-type) {
-        // padding: 8px 8px 8px 0;
-      }
     }
   }
 
@@ -118,7 +116,6 @@ export default {
     &.align-center {
       text-align: center;
     }
-
   }
 
   .is-small {
@@ -126,5 +123,4 @@ export default {
     color: color(text-light);
   }
 }
-
 </style>

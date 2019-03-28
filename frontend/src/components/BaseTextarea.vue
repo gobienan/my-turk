@@ -1,19 +1,25 @@
 <template>
   <div class="BaseTextarea">
-    <textarea :type="type" name="" v-model="mValue"></textarea>
-    <label class="Label">{{label}}</label>
+    <textarea v-model="mValue" :type="type" name></textarea>
+    <label class="Label">{{ label }}</label>
   </div>
 </template>
 <script>
 export default {
   name: 'BaseTextarea',
   props: {
-    label: String,
+    label: {
+      type: String,
+      default: '',
+    },
     type: {
       type: String,
-      default: ''
+      default: '',
     },
-    value: String
+    value: {
+      type: String,
+      default: '',
+    },
   },
   data: () => ({}),
   computed: {
@@ -24,16 +30,15 @@ export default {
       set(value) {
         // convert the label name to camelCase
         // eg:  AWS Access Key ID -> awsAccessKeyId
-        let key = this.label.toLowerCase();
-        key = key.replace(/ ([a-z])/g, (m, w) => w.toUpperCase());
+        let key = this.label.toLowerCase()
+        key = key.replace(/ ([a-z])/g, (m, w) => w.toUpperCase())
         this.$emit('keyPress', {
-          [key]: value
-        });
+          [key]: value,
+        })
       },
     },
   },
 }
-
 </script>
 <style lang="scss">
 .BaseTextarea {
@@ -48,7 +53,7 @@ export default {
     top: 10px;
     transform: translateY(-30px);
     font-size: rem(12px);
-    transition: all .2s ease-out;
+    transition: all 0.2s ease-out;
   }
 
   textarea {
@@ -65,14 +70,13 @@ export default {
     display: block;
     box-shadow: 2px 2px 0px 0 rgba(lighten(color(gray-dark), 10%), 0.2);
     line-height: 1.5;
-    
+
     &:focus {
-      +.Label {
+      + .Label {
         transform: translateY(-30px);
         font-size: rem(12px);
       }
     }
   }
 }
-
 </style>

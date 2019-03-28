@@ -1,37 +1,49 @@
 <template>
   <div class="Settings">
+    <BaseHeadline
+      :route="backbutton"
+      :title="settings.internalName || 'Add experiment'"
+      :description="`You are in ${settings.endpoint} mode`"
+    />
 
-    <BaseHeadline :route="backbutton" :title="settings.internalName || 'Add experiment'" :description="`You are in ${settings.endpoint} mode`" />
-
-    <Container :items="settingsInput" :endpoint="settings.endpoint" @updateSettings="updateSettings" />
+    <Container
+      :items="settingsInput"
+      :endpoint="settings.endpoint"
+      @updateSettings="updateSettings"
+    />
 
     <div class="ButtonWrapper">
-      <BaseButton second square title="Delete Experiment" :red="true" @click="handleDelete" />
-      <BaseButton prime square title="Save Settings" :green="true" @click="handleSave" />
+      <BaseButton second square title="Delete Experiment" :red="true" @click="handleDelete"/>
+      <BaseButton prime square title="Save Settings" :green="true" @click="handleSave"/>
     </div>
-    <BaseModal :visible="modalIsVisible" title="Delete Experiment" :cancel="{label:'cancel'}" :accept="{label:'delete',type:'warning'}" @onAccept="deleteExperiment" @onCancel="closeModal">
+    <BaseModal
+      :visible="modalIsVisible"
+      title="Delete Experiment"
+      :cancel="{ label: 'cancel' }"
+      :accept="{ label: 'delete', type: 'warning' }"
+      @onAccept="deleteExperiment"
+      @onCancel="closeModal"
+    >
       <p>Are you sure you want to delete the experiment?</p>
     </BaseModal>
   </div>
-
 </template>
 <script>
-import BaseButton from "@/components/BaseButton.vue";
-import BaseHeadline from "@/components/BaseHeadline.vue";
-import BaseModal from "@/components/BaseModal.vue";
+import BaseButton from '@/components/BaseButton.vue'
+import BaseHeadline from '@/components/BaseHeadline.vue'
+import BaseModal from '@/components/BaseModal.vue'
 
-import Container from "@/components/settings/Container.vue";
+import Container from '@/components/settings/Container.vue'
 
-import api from '@/api';
-
+import api from '@/api'
 
 export default {
-  name: "Tags",
+  name: 'Tags',
   components: {
     BaseButton,
     BaseHeadline,
     BaseModal,
-    Container
+    Container,
   },
   props: {
     experiment: {
@@ -61,24 +73,17 @@ export default {
     initial: {
       type: Boolean,
       default: true,
-    }
-  },
-  watch: {
-    experiment: {
-      immediate: true,
-      handler: function(experiment) {
-        this.settings = experiment;
-      }
-    }
+    },
   },
   data: () => ({
     modalIsVisible: false,
     backbutton: {
-      paths: "overview",
-      name: "back to Overview",
+      paths: 'overview',
+      name: 'back to Overview',
     },
     settings: {},
-    settingsInput: [{
+    settingsInput: [
+      {
         name: 'Internal Name',
         value: 'This is the project name',
       },
@@ -124,71 +129,81 @@ export default {
       },
     ],
   }),
-  methods: {
-    updateSettings(settings) {
-      this.settings = Object.assign(this.settings, settings);
-    },
-    hyphensToCamelCase(value) {
-      let key = value.toLowerCase();
-      key = key.replace(/ ([a-z])/g, (m, w) => w.toUpperCase());
-      return key;
-    },
-    async handleSave() {
-      let id = this.$route.query.id || '';
-      let settings = this.settings;
-      console.log(settings)
-      
-      let res = await api.saveSettings({ id, experiment: settings });
-
-      if (res.success) {
-        this.$toasted.success(res.message, {
-          position: "bottom-right",
-          duration: 3000,
-        });
-      } else {
-
-      }
-    },
-    async handleDelete() {
-      this.modalIsVisible = true;
-    },
-    closeModal() {
-      this.modalIsVisible = false;
-    },
-    async deleteExperiment() {
-      let id = this.$route.query.id || '';
-      let res = await api.deleteExperiment({ id });
-
-      if (res.success) {
-        this.$router.push({ name: 'overview' });
-        this.$toasted.error(res.message, {
-          position: "bottom-right",
-          duration: 3000,
-        });
-      }
-    },
-    async loadExperimentSettings() {
-      let id = this.$route.query.id;
-
-      if (!this.addExperiment && this.initial && id) {
-        let result = await api.getExperiments({ id });
-
-        if (result.success) {
-          this.settings = result.data[0];
-        }
-      }
-      this.settingsInput.map((elem) => {
-        let key = this.hyphensToCamelCase(elem.name);
-        elem.value = this.settings[key] || ''
-        return elem;
-      });
+  watch: {
+    experiment: {
+      immediate: true,
+      handler: function(experiment) {
+        this.settings = experiment
+      },
     },
   },
   mounted: function() {
-    this.loadExperimentSettings();
-  }
-};
+    this.loadExperimentSettings()
+  },
+  methods: {
+    updateSettings(settings) {
+      this.settings = Object.assign(this.settings, settings)
+    },
+    hyphensToCamelCase(value) {
+      let key = value.toLowerCase()
+      key = key.replace(/ ([a-z])/g, (m, w) => w.toUpperCase())
+      return key
+    },
+    async handleSave() {
+      let id = this.$route.query.id || ''
+      let settings = this.settings
+      console.log(settings)
 
+      let res = await api.saveSettings({ id, experiment: settings })
+
+      if (res.success) {
+        this.$toasted.success(res.message, {
+          position: 'bottom-right',
+          duration: 3000,
+        })
+      } else {
+        this.$toasted.error(res.message, {
+          position: 'bottom-right',
+          duration: 3000,
+        })
+      }
+    },
+    async handleDelete() {
+      this.modalIsVisible = true
+    },
+    closeModal() {
+      this.modalIsVisible = false
+    },
+    async deleteExperiment() {
+      let id = this.$route.query.id || ''
+      let res = await api.deleteExperiment({ id })
+
+      if (res.success) {
+        this.$router.push({ name: 'overview' })
+        this.$toasted.error(res.message, {
+          position: 'bottom-right',
+          duration: 3000,
+        })
+      }
+    },
+    async loadExperimentSettings() {
+      let id = this.$route.query.id
+
+      if (!this.addExperiment && this.initial && id) {
+        let result = await api.getExperiments({ id })
+
+        if (result.success) {
+          this.settings = result.data[0]
+        }
+      }
+      this.settingsInput.map(elem => {
+        let key = this.hyphensToCamelCase(elem.name)
+        elem.value = this.settings[key] || ''
+        return elem
+      })
+    },
+  },
+}
 </script>
 <style lang="scss">
 .Settings {
@@ -206,7 +221,5 @@ export default {
   .BaseButton.is-prime {
     margin-left: 10px;
   }
-
 }
-
 </style>

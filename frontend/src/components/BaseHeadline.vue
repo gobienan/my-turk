@@ -1,17 +1,21 @@
 <template>
   <div class="BaseHeadline">
-    <router-link v-if="route" class="BackButton" :to="{name: route.paths, params:route.params}">
+    <router-link
+      v-if="route"
+      class="BackButton"
+      :to="{ name: route.paths, params: route.params }"
+    >
       <i class="fas fa-angle-left"></i>
-      <span>{{route.name}}</span>
+      <span>{{ route.name }}</span>
     </router-link>
     <div v-if="prime">
-      <h1 class="Title" v-html="title" />
-      <h2 class="Description" v-html="description" />
+      <h1 class="Title">{{ title }}</h1>
+      <h2 class="Description">{{ description }}</h2>
     </div>
     <div v-else>
-      <h2 class="Title Title--small" v-html="title" />
-      <span class="Meta" v-if="meta" v-html="meta" />
-      <h3 class="Description Description--small" v-html="description" />
+      <h2 class="Title Title--small">{{ title }}</h2>
+      <span  v-if="meta"  class="Meta">{{meta}}</span>
+      <h3 class="Description Description--small">{{ description }}</h3>
     </div>
   </div>
 </template>
@@ -19,18 +23,34 @@
 export default {
   name: 'BaseHeadline',
   props: {
-    title: String,
-    description: String,
-    meta: String,
+    title: {
+      type:String,
+      default:''
+    },
+    description: {
+      type:String,
+      default:''
+    },
+    meta: {
+      type:String,
+      default:''
+    },
     prime: Boolean,
     route: {
-      name: String,
-      path: String,
-      params: Object
-    }
+      type: ()=> {},
+      default: {},
+      name: {
+        type:String,
+        default:''
+      },
+      path: {
+        type:String,
+        default:''
+      },
+      params: Object,
+    },
   },
 }
-
 </script>
 <style lang="scss">
 .BaseHeadline {
@@ -38,7 +58,7 @@ export default {
   color: color(text-dark);
   line-height: 1.25;
 
-  >div {
+  > div {
     position: relative;
   }
 
@@ -47,7 +67,7 @@ export default {
     left: 40px;
     font-size: rem(13px);
     top: -32px;
-    transition: all .2s ease-out;
+    transition: all 0.2s ease-out;
     cursor: pointer;
     padding: 5px;
     box-sizing: content-box;
@@ -56,7 +76,7 @@ export default {
     align-items: center;
 
     .fa-angle-left {
-      transition: all .2s ease-out;
+      transition: all 0.2s ease-out;
       transform: translateX(-5px);
     }
 
@@ -89,7 +109,6 @@ export default {
     &.Description--small {
       font-size: rem(25px);
       margin-top: 35px;
-
     }
   }
 
@@ -102,5 +121,4 @@ export default {
     padding: 0 40px;
   }
 }
-
 </style>

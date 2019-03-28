@@ -3,32 +3,49 @@
     <div class="Container">
       <span class="Hint">
         <i class="fas fa-info-circle"></i>
-        <span>Your credentials might be under ./username/.aws/<br>
-          Otherwise create new credentials <a href="https://docs.aws.amazon.com/de_de/sdk-for-net/v2/developer-guide/net-dg-setup.html#net-dg-signup" target="_blank">here</a>
+        <span
+          >Your credentials might be under ./username/.aws/<br />
+          Otherwise create new credentials
+          <a
+            href="https://docs.aws.amazon.com/de_de/sdk-for-net/v2/developer-guide/net-dg-setup.html#net-dg-signup"
+            target="_blank"
+            >here</a
+          >
         </span>
       </span>
-      <BaseInput :label="items[0]" value="" type="text" @keyPress="handleKeyPress" />
-      <BaseInput :label="items[1]" value="" type="password" @keyPress="handleKeyPress" />
-
+      <BaseInput
+        :label="items[0]"
+        value=""
+        type="text"
+        @keyPress="handleKeyPress"
+      />
+      <BaseInput
+        :label="items[1]"
+        value=""
+        type="password"
+        @keyPress="handleKeyPress"
+      />
     </div>
     <BaseButton square prime title="sign in" @click="handleLogin" />
   </BaseWrapper>
-
 </template>
 <script>
-import BaseInput from "../BaseInput.vue";
-import BaseButton from "../BaseButton.vue";
-import BaseWrapper from "../BaseWrapper.vue";
+import BaseInput from '../BaseInput.vue'
+import BaseButton from '../BaseButton.vue'
+import BaseWrapper from '../BaseWrapper.vue'
 
 export default {
-  name: "Grid",
+  name: 'Grid',
   components: {
     BaseInput,
     BaseButton,
-    BaseWrapper
+    BaseWrapper,
   },
   props: {
-    items: Array
+    items: {
+      type: Array,
+      default: () => [],
+    },
   },
   data: () => ({
     awsAccessKeyId: '',
@@ -36,20 +53,18 @@ export default {
   }),
   methods: {
     handleKeyPress({ awsAccessKeyId, awsSecretAccessKey }) {
-      this.awsAccessKeyId = awsAccessKeyId || this.awsAccessKeyId;
-      this.awsSecretAccessKey = awsSecretAccessKey || this.awsSecretAccessKey;
+      this.awsAccessKeyId = awsAccessKeyId || this.awsAccessKeyId
+      this.awsSecretAccessKey = awsSecretAccessKey || this.awsSecretAccessKey
     },
     handleLogin() {
-      let { awsAccessKeyId, awsSecretAccessKey } = this;
-      this.$emit("login", { awsAccessKeyId, awsSecretAccessKey })
-    }
-  }
-};
-
+      let { awsAccessKeyId, awsSecretAccessKey } = this
+      this.$emit('login', { awsAccessKeyId, awsSecretAccessKey })
+    },
+  },
+}
 </script>
 <style scoped lang="scss">
 .BaseWrapper {
-
   .Container {
     position: relative;
     transform: translateX(-20px);
@@ -83,5 +98,4 @@ export default {
     }
   }
 }
-
 </style>

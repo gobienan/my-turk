@@ -1,36 +1,53 @@
 <template>
-  <div class="BaseModal" :class="{'is-visible':visible}" @click="closeModal" ref="modal">
+  <div
+    ref="modal"
+    class="BaseModal"
+    :class="{ 'is-visible': visible }"
+    @click="closeModal"
+  >
     <div class="BaseModal-Content">
-      <h3 v-html="title" class="Title" />
+      <h3 class="Title" >{{ title }}</h3>
       <slot></slot>
       <div class="BaseModal-Content-Buttons">
-        <BaseButton second square :title="cancel.label" gray-light @click="onCancel" />
-        <BaseButton prime square :title="accept.label" :green="accept.type==='success'" :red="accept.type==='warning'" @click="onAccept" />
+        <BaseButton
+          second
+          square
+          :title="cancel.label"
+          gray-light
+          @click="onCancel"
+        />
+        <BaseButton
+          prime
+          square
+          :title="accept.label"
+          :green="accept.type === 'success'"
+          :red="accept.type === 'warning'"
+          @click="onAccept"
+        />
       </div>
     </div>
   </div>
-
 </template>
 <script>
-import BaseButton from "@/components/BaseButton.vue";
+import BaseButton from '@/components/BaseButton.vue'
 
 export default {
-  name: "BaseModal",
+  name: 'BaseModal',
   components: {
-    BaseButton
+    BaseButton,
   },
   props: {
     cancel: {
       type: Object,
       default: () => ({
         label: 'cancel',
-      })
+      }),
     },
     accept: {
       type: Object,
       default: () => ({
         label: 'accept',
-      })
+      }),
     },
     title: {
       type: String,
@@ -44,20 +61,19 @@ export default {
   data: () => ({}),
   methods: {
     onCancel() {
-      this.$emit('onCancel');
+      this.$emit('onCancel')
     },
     onAccept() {
-      this.$emit('onAccept');
+      this.$emit('onAccept')
     },
     closeModal(e) {
-      let target = e.target;
+      let target = e.target
       if (target == this.$refs.modal) {
-        this.$emit('onCancel');
+        this.$emit('onCancel')
       }
     },
   },
-};
-
+}
 </script>
 <style lang="scss">
 .BaseModal {
@@ -72,7 +88,7 @@ export default {
   display: flex;
   justify-content: center;
   align-items: center;
-  transition: all .3s $ease;
+  transition: all 0.3s $ease;
   opacity: 0;
   visibility: hidden;
 
@@ -91,7 +107,7 @@ export default {
     width: 35vw;
     box-shadow: 5px 5px 0px 0 rgba(lighten(color(gray-dark), 10%), 0.75);
     transform: scale(0.85) translateZ(0);
-    transition: all .3s $ease;
+    transition: all 0.3s $ease;
   }
 
   .Title {
@@ -101,7 +117,7 @@ export default {
   p {
     line-height: 1.5;
 
-    +* {
+    + * {
       margin-top: 40px;
 
       &:not(:last-child) {
@@ -110,15 +126,13 @@ export default {
     }
   }
 
-
   .BaseModal-Content-Buttons {
     display: flex;
     justify-content: flex-end;
 
-    >* {
+    > * {
       margin-left: 10px;
     }
   }
 }
-
 </style>

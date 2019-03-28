@@ -1,8 +1,15 @@
 <template>
-  <div class="BaseWrapper" :class="[{'is-red':red},{'is-green':green},{'is-gray-dark':grayDark},{'is-gray-light':grayLight}]">
-
+  <div
+    class="BaseWrapper"
+    :class="[
+      { 'is-red': red },
+      { 'is-green': green },
+      { 'is-gray-dark': grayDark },
+      { 'is-gray-light': grayLight },
+    ]"
+  >
     <div class="TitleWrapper">
-      <h2 class="Title" v-html="title"></h2>
+      <h2 class="Title">{{ title }}</h2>
     </div>
 
     <slot></slot>
@@ -12,21 +19,26 @@
 export default {
   name: 'BaseWrapper',
   props: {
-    title: String,
-    items: String,
+    title: {
+      type: String,
+      default: ''
+    },
+    items: {
+      type: String,
+      default: ''
+    },
     red: Boolean,
     green: Boolean,
     grayDark: Boolean,
     grayLight: Boolean,
   },
 }
-
 </script>
 <style lang="scss">
 .BaseWrapper {
   $outdent: 40px;
-  background: #FFFFFF;
-  box-shadow: 4px 20px 35px 0px rgba(0, 0, 0, 0.10);
+  background: #ffffff;
+  box-shadow: 4px 20px 35px 0px rgba(0, 0, 0, 0.1);
   border-radius: 25px;
   margin: 0 auto;
   display: flex;
@@ -73,7 +85,6 @@ export default {
     width: calc(100% + 80px);
     transform: translate(-40px, -20px);
     padding: 10px 40px;
-
   }
 
   .Title {
@@ -92,5 +103,4 @@ export default {
     transform: translateX(0);
   }
 }
-
 </style>

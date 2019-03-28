@@ -1,14 +1,20 @@
 <template>
-  <div class="BaseButton" @click="$emit('click')" :class="[
-   {'is-prime':prime},
-   {'is-second':second},
-   {'is-square':square},
-   {'is-inline':inline},
-   {'is-red':red},
-   {'is-green':green},
-   {'is-gray-light':grayLight},]">
+  <div
+    class="BaseButton"
+    :class="[
+      { 'is-prime': prime },
+      { 'is-second': second },
+      { 'is-square': square },
+      { 'is-inline': inline },
+      { 'is-red': red },
+      { 'is-green': green },
+      { 'is-gray-light': grayLight },
+    ]"
+    @click="$emit('click')"
+
+  >
     <slot></slot>
-    <span>{{title}}</span>
+    <span>{{ title }}</span>
   </div>
 </template>
 <script>
@@ -46,10 +52,9 @@ export default {
     grayLight: {
       type: Boolean,
       default: false,
-    }
+    },
   },
 }
-
 </script>
 <style lang="scss">
 .BaseButton {
@@ -63,7 +68,7 @@ export default {
   cursor: pointer;
   font-weight: 700;
   line-height: 1;
-  transition: all .3s $ease;
+  transition: all 0.3s $ease;
   user-select: none;
   box-shadow: 0px 2px 20px 0 rgba(lighten(color(gray-dark), 10%), 0);
 
@@ -82,13 +87,11 @@ export default {
     }
   }
 
-
   &.is-red {
     background-color: color(red);
 
     &:hover {
       box-shadow: 0px 5px 20px 0 lighten(color(red), 10%);
-
     }
   }
 
@@ -149,5 +152,4 @@ export default {
     }
   }
 }
-
 </style>

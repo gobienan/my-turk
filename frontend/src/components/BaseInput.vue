@@ -1,19 +1,25 @@
 <template>
   <div class="BaseInput">
-    <input :type="type" name="" v-model="mValue">
-    <label class="Label">{{label}}</label>
+    <input v-model="mValue" :type="type" name>
+    <label class="Label">{{ label }}</label>
   </div>
 </template>
 <script>
 export default {
   name: 'BaseInput',
   props: {
-    label: String,
+    label: {
+      type: String,
+      default: '',
+    },
     type: {
       type: String,
-      default: ''
+      default: '',
     },
-    value: String
+    value: {
+      type: String,
+      default: '',
+    },
   },
   data: () => ({}),
   computed: {
@@ -21,24 +27,21 @@ export default {
       get() {
         return this.value
       },
-      set(value) { 
+      set(value) {
         // convert the label name to camelCase
         // eg:  AWS Access Key ID -> awsAccessKeyId
-        let key = this.label.toLowerCase();
-        key = key.replace(/ ([a-z])/g, (m, w) => w.toUpperCase());
+        let key = this.label.toLowerCase()
+        key = key.replace(/ ([a-z])/g, (m, w) => w.toUpperCase())
         this.$emit('keyPress', {
-          [key]: value
-        });
+          [key]: value,
+        })
       },
     },
   },
   methods: {
-    handleKeyPress() {
-
-    }
-  }
+    handleKeyPress() {},
+  },
 }
-
 </script>
 <style lang="scss">
 .BaseInput {
@@ -53,7 +56,7 @@ export default {
     top: 10px;
     transform: translateY(-30px);
     font-size: rem(12px);
-    transition: all .2s ease-out;
+    transition: all 0.2s ease-out;
   }
 
   input {
@@ -67,12 +70,11 @@ export default {
     font-size: rem(14px);
 
     &:focus {
-      +.Label {
+      + .Label {
         transform: translateY(-30px);
         font-size: rem(12px);
       }
     }
   }
 }
-
 </style>
