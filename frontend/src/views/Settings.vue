@@ -104,7 +104,8 @@ export default {
         items: [
           {
             name: 'Experiment Name',
-            value: 'This is the experiment name for myturk',
+            value: '',
+            placeholder: 'This is the experiment name for the overview page'
           },
         ],
       },
@@ -114,14 +115,17 @@ export default {
           {
             name: 'Title',
             value: 'This is the title shown to workers',
+            placeholder: 'This is the title shown to workers'
           },
           {
             name: 'Description',
             value: 'Tell me something about this experiment',
+            placeholder: 'This is the description shown to workers'
           },
           {
             name: 'Keywords',
             value: 'user test, data completion, information extraction',
+            placeholder: 'seperated by comma'
           },
         ],
       },
@@ -132,19 +136,23 @@ export default {
           {
             name: 'Award Qualification name',
             value: '',
+            placeholder: 'Fill in if you want to qualify your workers'
           },
           {
             name: 'Award Qualification description',
             value: '',
+            placeholder: 'Fill in if you want to qualify your workers'
           },
           {
             name: 'Award Qualification ID',
             value: '',
-            disabled: true
+            disabled: true,
+            placeholder: 'auto-generated from qualification name and qualification description'
           },
           {
             name: 'Reward per Assignment',
             value: '',
+            placeholder: 'e.g. 3.5 for 3.5$'
           },
         ],
       },
@@ -154,14 +162,17 @@ export default {
           {
             name: 'Hit expires after (days)',
             value: '',
+            placeholder: 'e.g. 4 for 4 days or 0.5 for 12 hours'
           },
           {
             name: 'Assignment duration in minutes',
             value: '',
+            placeholder: 'e.g. 4 for 4 minutes or 0.5 for 30 seconds'
           },
           {
             name: 'Assignments per HIT',
             value: '',
+            placeholder: 'e.g. 9 for 9 assignments'
           },
         ],
       },
@@ -177,6 +188,7 @@ export default {
           {
             name: 'Entrypoint',
             value: '',
+            placeholder: 'URL of your Experiment (iframe)'
           },
         ],
       },

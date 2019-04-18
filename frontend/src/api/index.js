@@ -47,20 +47,6 @@ export default {
 }
 
 /**
- * GET Request.
- * @param {String} endpoint.
- * @return {Object} The result of the request.
- */
-function getData(endpoint) {
-  let options = {
-    endpoint: SERVER_URL + endpoint,
-    method: 'GET',
-  }
-
-  return request(options)
-}
-
-/**
  * POST Request.
  * @param {String} endpoint.
  * @param {Object} payload is the body data.
