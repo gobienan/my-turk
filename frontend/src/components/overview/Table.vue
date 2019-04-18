@@ -22,7 +22,7 @@
 
     <BaseRow v-for="experiment in experiments" :key="experiment._id" bold>
       <span class="Anchor" @click="onExperimentClick(experiment)">
-        {{ experiment.internalName }}&nbsp;
+        {{ experiment.experimentName }}&nbsp;
         <i class="far fa-edit"></i>
       </span>
       <span class="is-wide">{{ experiment.description }}</span>
@@ -43,7 +43,7 @@
       </span>
 
       <BaseRow v-for="hit in experiment.hits" :key="hit.id">
-        <span class="Anchor" @click="onHitClick(hit)">HIT</span>
+        <span class="Anchor" @click="onHitClick(hit, experiment)">HIT</span>
         <span class="is-wide">
           {{ hit.id }}&nbsp;
           <BaseCopy :value="hit.id" />
@@ -86,13 +86,14 @@ export default {
         params: { experiment: experiment, initial: false },
       })
     },
-    onHitClick(hit) {
+    onHitClick(hit, experiment) {
       this.$router.push({
         name: 'workers',
         params: {
           id: hit.id,
           title: hit.title,
           creationTime: hit.creationTime,
+          awardQualificationID: experiment.awardQualificationId,
         },
         query: { id: hit.id },
       })

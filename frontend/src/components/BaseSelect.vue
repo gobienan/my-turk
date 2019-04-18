@@ -1,6 +1,6 @@
 <template>
   <div class="BaseSelect">
-    <select v-model="selected">
+    <select v-model="selected" :disabled="disabled">
       <option v-for="(option, i) in options" :key="i" :value="option.value">{{
         option.label
       }}</option>
@@ -14,6 +14,10 @@ export default {
   name: 'BaseSelect',
   components: {},
   props: {
+    disabled: {
+      type: Boolean,
+      default: false,
+    },
     options: {
       type: Array,
       default: () => [],
@@ -45,12 +49,13 @@ export default {
   width: 100%;
   background-color: color(bg);
   position: relative;
+  padding: 10px 18px;
 
   select {
-    width: calc(100% - 30px);
+    width: calc(100% - 10px);
     height: 100%;
     background-color: transparent;
-    margin-left: 10px;
+    margin-left: -10px;
     border: none;
     font-family: font(regular);
     font-size: rem(14px);

@@ -67,7 +67,7 @@ export default {
   cursor: pointer;
   font-weight: 700;
   line-height: 1;
-  transition: all 0.3s $ease;
+  transition: all 0.2s $ease;
   user-select: none;
   box-shadow: 0px 2px 20px 0 rgba(lighten(color(gray-dark), 10%), 0);
 
@@ -117,7 +117,7 @@ export default {
 
     &:hover {
       transform: translateY(0px);
-      background-color: rgba(color(gray-dark), 0.15);
+      background-color: rgba(color(gray-dark), 0.25);
       box-shadow: none;
     }
 

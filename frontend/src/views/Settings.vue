@@ -7,8 +7,9 @@
     />
 
     <Container
-      :items="settingsInput"
+      :groups="settingsInput"
       :endpoint="settings.endpoint"
+      :has-hits="experiment.hits.length > 0"
       @updateSettings="updateSettings"
     />
 
@@ -62,22 +63,25 @@ export default {
       type: Object,
       default: function() {
         return {
-          internalName: 'This is the project name',
-          title: 'This is the title shown to workers',
-          description: 'Tell me something about this experiment',
-          externalUrl: '',
+          experimentName: '',
+          title: '',
+          description: '',
+          entrypoint: '',
           available: '0 / 0',
           pending: '0 / 0',
           waitingForApproval: '0 / 0',
           completed: '0 / 0',
-          keywords: 'user test, data completion, information extraction',
-          awardQualificationUponCompletion: '',
-          hitDurationInMinutes: '',
+          keywords: '',
+          awardQualificationName: '',
+          awardQualificationDescription: '',
+          awardQualificationId: '',
+          hitExpiresAfterDays: '',
           assignmentDurationInMinutes: '',
           assignmentsPerHit: '',
-          defaultRequirements: 'us-based, 95% approval, more than 1.000 hits',
+          defaultRequirements: false,
           rewardPerAssignment: '',
-          endpoint: 'development',
+          hits: [],
+          endpoint: 'sandbox',
         }
       },
     },
@@ -96,48 +100,85 @@ export default {
     settings: {},
     settingsInput: [
       {
-        name: 'Internal Name',
-        value: 'This is the project name',
+        title: 'Internal Settings',
+        items: [
+          {
+            name: 'Experiment Name',
+            value: 'This is the experiment name for myturk',
+          },
+        ],
       },
       {
-        name: 'Title',
-        value: 'This is the title shown to workers',
+        title: 'Informations for the workers',
+        items: [
+          {
+            name: 'Title',
+            value: 'This is the title shown to workers',
+          },
+          {
+            name: 'Description',
+            value: 'Tell me something about this experiment',
+          },
+          {
+            name: 'Keywords',
+            value: 'user test, data completion, information extraction',
+          },
+        ],
+      },
+
+      {
+        title: 'Qualification and Rewards',
+        items: [
+          {
+            name: 'Award Qualification name',
+            value: '',
+          },
+          {
+            name: 'Award Qualification description',
+            value: '',
+          },
+          {
+            name: 'Award Qualification ID',
+            value: '',
+            disabled: true
+          },
+          {
+            name: 'Reward per Assignment',
+            value: '',
+          },
+        ],
       },
       {
-        name: 'Description',
-        value: 'Tell me something about this experiment',
+        title: 'Hit and Assignments',
+        items: [
+          {
+            name: 'Hit expires after (days)',
+            value: '',
+          },
+          {
+            name: 'Assignment duration in minutes',
+            value: '',
+          },
+          {
+            name: 'Assignments per HIT',
+            value: '',
+          },
+        ],
       },
       {
-        name: 'External URL',
-        value: '',
-      },
-      {
-        name: 'Keywords',
-        value: 'user test, data completion, information extraction',
-      },
-      {
-        name: 'Award Qualification upon completion',
-        value: '',
-      },
-      {
-        name: 'Default Requirements',
-        value: 'us-based, 95% approval, more than 1.000 hits',
-      },
-      {
-        name: 'Hit duration in minutes',
-        value: '',
-      },
-      {
-        name: 'Assignment duration in minutes',
-        value: '',
-      },
-      {
-        name: 'Assignments per HIT',
-        value: '',
-      },
-      {
-        name: 'Reward per Assignment',
-        value: '',
+        title: 'Requirements and Entrypoint',
+        items: [
+          {
+            name: 'Default Requirements',
+            hint: 'us-based, 95% approval, more than 1.000 hits',
+            type: 'checkbox',
+            value: false
+          },
+          {
+            name: 'Entrypoint',
+            value: '',
+          },
+        ],
       },
     ],
   }),
@@ -157,6 +198,7 @@ export default {
       this.settings = Object.assign(this.settings, settings)
     },
     hyphensToCamelCase(value) {
+      // if(!value) {return}
       let key = value.toLowerCase()
       key = key.replace(/ ([a-z])/g, (m, w) => w.toUpperCase())
       return key
@@ -176,7 +218,7 @@ export default {
       } else {
         this.$toasted.error(res.message, {
           position: 'bottom-right',
-          duration: 3000,
+          duration: 5000,
         })
       }
     },
@@ -203,15 +245,18 @@ export default {
 
       if (!this.addExperiment && this.initial && id) {
         let result = await api.getExperiments({ id })
+        console.log('result', result)
 
         if (result.success) {
           this.settings = result.data[0]
         }
       }
       this.settingsInput.map(elem => {
-        let key = this.hyphensToCamelCase(elem.name)
-        elem.value = this.settings[key] || ''
-        return elem
+        elem.items.forEach(item => {
+          let key = this.hyphensToCamelCase(item.name)
+          item.value = this.settings[key]
+          return item
+        })
       })
     },
   },
@@ -224,7 +269,7 @@ export default {
   .ButtonWrapper {
     top: 0;
     right: 0;
-    padding-bottom: 50px;
+    padding-bottom: 30px;
     display: flex;
     justify-content: flex-end;
     position: absolute;
@@ -232,6 +277,7 @@ export default {
 
   .BaseButton.is-prime {
     margin-left: 10px;
+    margin-top: 0;
   }
 }
 </style>

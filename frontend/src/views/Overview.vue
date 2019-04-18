@@ -22,11 +22,6 @@
         @onHitDeleteClick="handleDeleteHIT"
       />
     </BaseWrapper>
-
-    <BaseWrapper title="Development" gray-dark>
-      <Table :experiments="experiments.development" />
-    </BaseWrapper>
-
     <BaseButton prime title="add experiment" @click="addExperiment" />
 
     <BaseModal
@@ -79,7 +74,6 @@ export default {
         this.experiments = result.data
         this.experiments.production = result.data.production || []
         this.experiments.sandbox = result.data.sandbox || []
-        this.experiments.development = result.data.development || []
       }
     },
     async addExperiment() {
@@ -95,7 +89,7 @@ export default {
         this.$toasted.show(res.message, {
           type: 'error',
           position: 'bottom-right',
-          duration: 3000,
+          duration: 5000,
         })
       }
     },
@@ -118,7 +112,7 @@ export default {
       } else {
         this.$toasted.error(res.message, {
           position: 'bottom-right',
-          duration: 3000,
+          duration: 5000,
         })
       }
     },
@@ -172,7 +166,7 @@ export default {
       } else {
         this.$toasted.error(res.message, {
           position: 'bottom-right',
-          duration: 3000,
+          duration: 5000,
         })
       }
     },

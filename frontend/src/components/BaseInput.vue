@@ -1,6 +1,6 @@
 <template>
-  <div class="BaseInput">
-    <input v-model="mValue" :type="type" name />
+  <div class="BaseInput" :class="{ 'is-disabled': disabled }">
+    <input v-model="mValue" :type="type" name :disabled="disabled" />
     <label class="Label">{{ label }}</label>
   </div>
 </template>
@@ -15,6 +15,10 @@ export default {
     type: {
       type: String,
       default: '',
+    },
+    disabled: {
+      type: Boolean,
+      default: false,
     },
     value: {
       type: String,
@@ -50,6 +54,10 @@ export default {
   padding: 10px 18px;
   width: 100%;
 
+  &.is-disabled {
+    background-color: lighten(color(bg), 3%);
+  }
+  
   .Label {
     position: absolute;
     left: 18px;

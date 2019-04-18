@@ -36,7 +36,7 @@
         <div class="is-small">{{ worker.finished.date || '' }}</div>
       </span>
       <span class="align-right">
-        <span class="Anchor" @click="onApprove(worker.assignmentID)"
+        <span class="Anchor" @click="onApprove(worker.id, worker.assignmentID)"
           >accept</span
         >
         &nbsp;/&nbsp;
@@ -65,8 +65,8 @@ export default {
   },
   data: () => ({}),
   methods: {
-    onApprove(id) {
-      this.$emit('onApprove', id)
+    onApprove(workerID, assignmentID) {
+      this.$emit('onApprove', { workerID, assignmentID })
     },
     onReject(id) {
       this.$emit('onReject', id)

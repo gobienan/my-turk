@@ -37,8 +37,8 @@ export default {
     },
     prime: Boolean,
     route: {
-      type: () => {},
-      default: {},
+      type: Object,
+      default: ()=>{},
       name: {
         type: String,
         default: '',

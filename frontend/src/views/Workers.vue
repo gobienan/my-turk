@@ -85,6 +85,10 @@ export default {
       type: String,
       default: '',
     },
+    awardQualificationID: {
+      type: String,
+      default: '',
+    },
   },
   data: () => ({
     id: '',
@@ -95,6 +99,7 @@ export default {
       'Worker did not submit any data, our server shows no HIT-relevant activity whatsoever for this assigment.',
     approvalFeedback: 'Thank you very much for participating!',
     assignmentID: '',
+    workerID: '',
     backbutton: {
       paths: 'overview',
       name: 'back to Overview',
@@ -199,9 +204,10 @@ export default {
       console.log(this.approved)
       console.log(this.rejected)
     },
-    handleApprove(id) {
+    handleApprove({ workerID, assignmentID }) {
       this.modalApproveIsVisible = true
-      this.assignmentID = id
+      this.workerID = workerID
+      this.assignmentID = assignmentID
     },
     handleReject(id) {
       this.modalRejectIsVisible = true
@@ -216,8 +222,15 @@ export default {
     async approveAssignment() {
       let id = this.assignmentID
       let feedback = this.approvalFeedback
-      let res = await api.approveAssignment({ id, feedback })
-      console.log(feedback)
+      let awardQualificationID = this.awardQualificationID || ''
+      let workerID = this.workerID
+
+      let res = await api.approveAssignment({
+        id,
+        feedback,
+        awardQualificationID,
+        workerID,
+      })
 
       if (res.success) {
         this.closeModal()
