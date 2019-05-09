@@ -9,14 +9,9 @@ clone the git repo and run:
 ```bash
 docker-compose up
 ```
-### Overview of your Experiments
+Wait for docker to finish and afterwards open http://localhost:8080
 
-![Screenshot](/design/assets/overview.png)
-
-
-### Overview of your Workers
-
-![Screenshot](/design/assets/workers.png)
+![Screenshot](/design/assets/demo.gif)
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
