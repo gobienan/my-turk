@@ -11,7 +11,7 @@ docker-compose up
 ```
 Wait for docker to finish and afterwards open http://localhost:8080
 
-## SneakPeak
+## Sneak Peek
 ![Screenshot](/design/assets/demo.gif)
 
 ## License
