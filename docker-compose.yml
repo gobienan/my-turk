@@ -13,6 +13,8 @@ services:
     build: ./backend
     ports:
       - "3000:3000"
+    volumes:
+      - .:/backend
     links:
       - mongo
     depends_on:
@@ -25,5 +27,7 @@ services:
     build: ./frontend
     ports:
       - "8080:8080"
+    volumes:
+      - .:/frontend
     links:
       - backend
