@@ -9,7 +9,7 @@ clone the git repo and run:
 ```bash
 docker-compose up
 ```
-Wait for docker to finish and afterwards open http://localhost:8080
+Wait for docker to finish and open http://localhost:8080 afterwards
 
 ## Sneak Peek
 ![Screenshot](/design/assets/demo.gif)
