@@ -105,7 +105,7 @@ export default {
           {
             name: 'Experiment Name',
             value: '',
-            placeholder: 'This is the experiment name for the overview page'
+            placeholder: 'This is the experiment name for the overview page',
           },
         ],
       },
@@ -115,17 +115,17 @@ export default {
           {
             name: 'Title',
             value: 'This is the title shown to workers',
-            placeholder: 'This is the title shown to workers'
+            placeholder: 'This is the title shown to workers',
           },
           {
             name: 'Description',
             value: 'Tell me something about this experiment',
-            placeholder: 'This is the description shown to workers'
+            placeholder: 'This is the description shown to workers',
           },
           {
             name: 'Keywords',
             value: 'user test, data completion, information extraction',
-            placeholder: 'seperated by comma'
+            placeholder: 'seperated by comma',
           },
         ],
       },
@@ -136,23 +136,24 @@ export default {
           {
             name: 'Award Qualification name',
             value: '',
-            placeholder: 'Fill in if you want to qualify your workers'
+            placeholder: 'Fill in if you want to qualify your workers',
           },
           {
             name: 'Award Qualification description',
             value: '',
-            placeholder: 'Fill in if you want to qualify your workers'
+            placeholder: 'Fill in if you want to qualify your workers',
           },
           {
             name: 'Award Qualification ID',
             value: '',
             disabled: true,
-            placeholder: 'auto-generated from qualification name and qualification description'
+            placeholder:
+              'auto-generated from qualification name and qualification description',
           },
           {
             name: 'Reward per Assignment',
             value: '',
-            placeholder: 'e.g. 3.5 for 3.5$'
+            placeholder: 'e.g. 3.5 for 3.5$',
           },
         ],
       },
@@ -162,17 +163,17 @@ export default {
           {
             name: 'Hit expires after (days)',
             value: '',
-            placeholder: 'e.g. 4 for 4 days or 0.5 for 12 hours'
+            placeholder: 'e.g. 4 for 4 days or 0.5 for 12 hours',
           },
           {
             name: 'Assignment duration in minutes',
             value: '',
-            placeholder: 'e.g. 4 for 4 minutes or 0.5 for 30 seconds'
+            placeholder: 'e.g. 4 for 4 minutes or 0.5 for 30 seconds',
           },
           {
             name: 'Assignments per HIT',
             value: '',
-            placeholder: 'e.g. 9 for 9 assignments'
+            placeholder: 'e.g. 9 for 9 assignments',
           },
         ],
       },
@@ -183,12 +184,12 @@ export default {
             name: 'Default Requirements',
             hint: 'us-based, 95% approval, more than 1.000 hits',
             type: 'checkbox',
-            value: false
+            value: false,
           },
           {
             name: 'Entrypoint',
             value: '',
-            placeholder: 'URL of your Experiment (iframe)'
+            placeholder: 'URL of your Experiment (iframe)',
           },
         ],
       },
@@ -227,6 +228,7 @@ export default {
           position: 'bottom-right',
           duration: 3000,
         })
+        this.$router.push({ name: 'overview'});
       } else {
         this.$toasted.error(res.message, {
           position: 'bottom-right',
@@ -285,11 +287,17 @@ export default {
     display: flex;
     justify-content: flex-end;
     position: absolute;
+    flex-direction: column;
   }
 
   .BaseButton.is-prime {
     margin-left: 10px;
     margin-top: 0;
+  }
+  @media (min-width: breakpoint(tablet-portrait)) {
+    .ButtonWrapper {
+      flex-direction: row;
+    }
   }
 }
 </style>

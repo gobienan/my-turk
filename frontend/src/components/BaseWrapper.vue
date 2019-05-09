@@ -39,14 +39,13 @@ export default {
   $outdent: 40px;
   background: #ffffff;
   box-shadow: 4px 20px 35px 0px rgba(0, 0, 0, 0.1);
-  border-radius: 0px;
+  border-radius: 25px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   padding: 20px 40px;
   overflow: hidden;
-  width: calc(100% + #{$outdent * 2});
-  transform: translateX(-$outdent);
+  width: 100%;
   margin-bottom: 60px;
 
   &:last-of-type {
@@ -101,6 +100,7 @@ export default {
   @media (min-width: breakpoint(tablet-portrait)) {
     width: 100%;
     transform: translateX(0);
+    padding: 20px 40px;
   }
 }
 </style>
