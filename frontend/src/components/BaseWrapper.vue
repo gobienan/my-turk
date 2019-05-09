@@ -39,7 +39,7 @@ export default {
   $outdent: 40px;
   background: #ffffff;
   box-shadow: 4px 20px 35px 0px rgba(0, 0, 0, 0.1);
-  border-radius: 25px;
+  border-radius: 0px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
