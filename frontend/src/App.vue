@@ -14,12 +14,16 @@
 <style lang="scss">
 .App {
   color: #2c3e50;
-  padding: 40px;
+  padding: 20px;
   height: 100%;
 
   > * {
     max-width: 1200px;
     margin: 0 auto;
+  }
+  @media (min-width: breakpoint(tablet-portrait)) {
+  
+    padding: 40px;
   }
 }
 

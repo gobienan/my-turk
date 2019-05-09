@@ -1,0 +1,22 @@
+{
+    "name": "my-turk",
+    "version": "1.0.0",
+    "scripts": {
+        "prestart": "mongod --dbpath=./data/ --fork --logpath /dev/null",
+        "start": "yarn --cwd ./backend/ start | yarn --cwd ./frontend/ serve",
+        "stop": "mongo admin --eval \"db.getSiblingDB('admin').shutdownServer()\""
+    },
+    "author": {
+        "name": "Gobie Nanthakumar",
+        "email": "gobienan@gmail.com",
+        "url": "https://gobienan.com"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/gobienan/my-turk.git"
+    },
+    "bugs": "https://github.com/gobienan/my-turk/issues",
+    "description": "A tool driven approach to Mechanical Turk user experiments",
+    "private": true,
+    "license": "MIT"
+}

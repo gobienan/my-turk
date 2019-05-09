@@ -64,7 +64,7 @@ export default {
 
   .BackButton {
     position: absolute;
-    left: 40px;
+    left: 0px;
     font-size: rem(13px);
     top: -32px;
     transition: all 0.2s ease-out;
@@ -117,8 +117,7 @@ export default {
     font-size: rem(14px);
   }
 
-  @media (min-width: breakpoint(tablet-portrait)) {
-    padding: 0 40px;
+  @media (max-width: breakpoint(tablet-portrait)) {
   }
 }
 </style>
