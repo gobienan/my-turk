@@ -1,6 +1,6 @@
 <template>
   <div class="BaseInput" :class="{ 'is-disabled': disabled }">
-    <input v-model="mValue" :type="type" name :disabled="disabled" />
+    <input v-model="mValue" :type="type" name :disabled="disabled" :placeholder="placeholder"/>
     <label class="Label">{{ label }}</label>
   </div>
 </template>
@@ -24,6 +24,10 @@ export default {
       type: String,
       default: '',
     },
+    placeholder:{
+      type: String,
+      default : ''
+    }
   },
   data: () => ({}),
   computed: {
@@ -55,7 +59,10 @@ export default {
   width: 100%;
 
   &.is-disabled {
-    background-color: lighten(color(bg), 3%);
+    background-color: lighten(color(bg), 5%);
+    .Label {
+      top: 20px;
+    }
   }
   
   .Label {
@@ -76,7 +83,9 @@ export default {
     font-family: font(regular);
     width: 100%;
     font-size: rem(14px);
-
+    &::placeholder {
+      color: rgba(black, 0.4);
+    }
     &:focus {
       + .Label {
         transform: translateY(-30px);

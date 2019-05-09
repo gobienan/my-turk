@@ -23,6 +23,7 @@
             :label="item.name || item"
             :value="item.value"
             :disabled="item.disabled"
+            :placeholder="item.placeholder || ''"
             @keyPress="handleKeyPress"
           />
         </template>

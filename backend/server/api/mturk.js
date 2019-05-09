@@ -1,12 +1,9 @@
 const express = require('express');
 const AWS = require('aws-sdk');
-const assert = require('assert');
 const mongo = require('../services/mongo');
 const ObjectId = require('mongodb').ObjectId;
-const router = express.Router();
 const endpoint = 'https://mturk-requester-sandbox.us-east-1.amazonaws.com';
 //const endpoint = 'https://mturk-requester.us-east-1.amazonaws.com';
-const bodyParser = require('body-parser');
 const region = 'us-east-1';
 const app = express();
 
@@ -39,6 +36,7 @@ app.post('/login', async (req, res) => {
 
     mturk = new AWS.MTurk();
     let balance = await getBalance(mturk);
+
     return res.send({
       success: true,
       balance: balance,
@@ -133,6 +131,7 @@ app.post('/getExperiments', async (req, res) => {
     for (var i = 0; i < result.length; i++) {
       let hits = result[i].hits;
       let exp = {};
+
       exp.available = 0;
       exp.pending = 0;
       exp.waitingForApproval = 0;

@@ -22,7 +22,7 @@
         @onHitDeleteClick="handleDeleteHIT"
       />
     </BaseWrapper>
-    <BaseButton prime title="add experiment" @click="addExperiment" />
+    <BaseButton prime title="new experiment" @click="addExperiment" />
 
     <BaseModal
       :visible="modalIsVisible"

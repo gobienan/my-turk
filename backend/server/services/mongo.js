@@ -1,9 +1,8 @@
 const MongoClient = require('mongodb').MongoClient;
 const Server = require('mongodb').Server;
-const assert = require('assert');
-const url = 'localhost';
-const port = '27017';
-const dbName = 'myTurk';
+const url = 'mongo';
+const port = 27017;
+const dbName = 'my-turk';
 const collection = 'experiments';
 
 let client;
@@ -13,15 +12,16 @@ module.exports = {
 	connectToServer: () => {
 		let status = {};
 		status.success = false;
-		client = new MongoClient(new Server(url, 27017));
+		client = new MongoClient(new Server(url, port));
 
 		let connection = new Promise((resolve, reject) => {
+
 			client.connect((err, mongoClient) => {
 				try {
 					let db = mongoClient.db(dbName);
 					resolve(db);
 				} catch (e) {
-					reject("Could not connect to database");
+					reject(e);
 				}
 			});
 		}).then(async (db) => {
@@ -31,6 +31,8 @@ module.exports = {
 		}).catch((err) => {
 			status.success = false;
 			status.error = err;
+			console.log('err', err);
+
 			return status;
 		});
 		return connection;
