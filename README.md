@@ -11,7 +11,8 @@ docker-compose up
 ```
 Wait for docker to finish and afterwards open http://localhost:8080
 
-![Screenshot](/design/assets/demo.png)
+## SneakPeak
+![Screenshot](/design/assets/demo.gif)
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
