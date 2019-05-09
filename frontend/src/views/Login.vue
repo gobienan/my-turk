@@ -1,7 +1,7 @@
 <template>
   <div class="Login">
     <BaseHeadline
-      title="Sing in to myTurk"
+      title="Sign in to myTurk"
       description="The true method of knowledge is experiment. — William Blake"
     />
     <Container :items="login" @login="handleLogin" />

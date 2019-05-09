@@ -1,6 +1,6 @@
 const MongoClient = require('mongodb').MongoClient;
 const Server = require('mongodb').Server;
-const url = 'mongo';
+const url = process.env.NODE_ENV === 'production' ? 'mongo' : 'localhost';
 const port = 27017;
 const dbName = 'my-turk';
 const collection = 'experiments';

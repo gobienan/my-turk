@@ -43,7 +43,7 @@
       </span>
 
       <BaseRow v-for="hit in experiment.hits" :key="hit.id">
-        <span class="Anchor" @click="onHitClick(hit, experiment)">HIT</span>
+        <span class="" @click="onHitClick(hit, experiment)">HIT</span>
         <span class="is-wide">
           {{ hit.id }}&nbsp;
           <BaseCopy :value="hit.id" />
@@ -53,7 +53,7 @@
         <span class="is-narrow align-right">{{ hit.waitingForApproval }}</span>
         <span class="is-narrow align-right">{{ hit.completed }}</span>
         <span class="is-narrow align-center">
-          <span class="Anchor" @click="onHitDeleteClick(hit)"></span>
+          <span class="Anchor" @click="onHitClick(hit, experiment)">Preview</span>
         </span>
       </BaseRow>
     </BaseRow>
